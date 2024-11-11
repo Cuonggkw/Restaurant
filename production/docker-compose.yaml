@@ -1,0 +1,26 @@
+version: "4.33.1"
+services:
+  database:
+    image: mysql:8.0
+    restart: always
+    environment:
+      - MYSQL_DATABASE=restaurant
+      - MYSQL_ROOT_PASSWORD=123456
+    ports:
+      - '3307:3306'
+    expose:
+      - 3306
+
+  backend:
+    build:
+      context: ../api
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - BD_PORT=3306
+      - DB_HOST=database
+      # - DB_HOST=host.docker.internal
+    ports:
+      - 8080:8080
+
+  # docker compose -p restaurant-mysql up -d

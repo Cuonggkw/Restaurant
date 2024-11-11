@@ -1,0 +1,45 @@
+{
+  "name": "back_end",
+  "version": "1.0.0",
+  "description": "nodejs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node src/server.js",
+    "build-src": "babel src -d build --copy-files",
+    "build": "node build/server.js",
+    "migrate:account": "npx sequelize-cli db:migrate --migrations-path src/modules/Account/migrations --models-path src/modules/Account/models",
+    "migrate:category": "npx sequelize-cli db:migrate --migrations-path src/modules/Category/migrations --models-path src/modules/Category/models",
+    "migrate:menu": "npx sequelize-cli db:migrate --migrations-path src/modules/Menu/migrations --models-path src/modules/Menu/models",
+    "migrate:order": "npx sequelize-cli db:migrate --migrations-path src/modules/Order/migrations --models-path src/modules/Order/models",
+    "migrate:table": "npx sequelize-cli db:migrate --migrations-path src/modules/Table/migrations --models-path src/modules/Table/models"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "back_end",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.3",
+    "bootstrap": "^5.3.3",
+    "cookie-parser": "1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "jsonwebtoken": "9.0.2",
+    "pg": "8.7.1",
+    "pg-hstore": "2.3.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.25.6",
+    "@babel/core": "^7.25.2",
+    "@babel/node": "^7.25.0",
+    "@babel/preset-env": "^7.25.4",
+    "mysql2": "^3.11.3",
+    "nodemon": "^3.1.5",
+    "sequelize": "^6.37.3",
+    "sequelize-cli": "^6.6.2"
+  }
+}
